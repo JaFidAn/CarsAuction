@@ -58,7 +58,7 @@ export default function Filters() {
               onClick={() => setParams({ filterBy: value })}
               color={`${filterBy === value ? "red" : "gray"}`}
             >
-              <Icon clasName="mr-3 h-4 w-4" />
+              <Icon className="mr-3 h-4 w-4" />
               {label}
             </Button>
           ))}
@@ -73,7 +73,7 @@ export default function Filters() {
               onClick={() => setParams({ orderBy: value })}
               color={`${orderBy === value ? "red" : "gray"}`}
             >
-              <Icon clasName="mr-3 h-4 w-4" />
+              <Icon className="mr-3 h-4 w-4" />
               {label}
             </Button>
           ))}
