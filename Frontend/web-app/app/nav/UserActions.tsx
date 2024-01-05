@@ -1,5 +1,6 @@
 "use client";
 
+import { useParamsStore } from "@/hooks/useParamsStore";
 import { Dropdown } from "flowbite-react";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
@@ -16,14 +17,25 @@ type Props = {
 export default function UserActions({ user }: Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const setParams = useParamsStore((state) => state.setParams);
+
+  function setWinner() {
+    setParams({ winner: user.username, seller: undefined });
+    if (pathname !== "/") router.push("/");
+  }
+
+  function setSeller() {
+    setParams({ seller: user.username, winner: undefined });
+    if (pathname !== "/") router.push("/");
+  }
 
   return (
     <Dropdown inline label={`Welcome ${user.name}`}>
-      <Dropdown.Item icon={HiUser}>
-        <Link href="/auctions/create">My Auctions</Link>
+      <Dropdown.Item icon={HiUser} onClick={setSeller}>
+        My Auctions
       </Dropdown.Item>
-      <Dropdown.Item icon={AiFillTrophy}>
-        <Link href="/auctions/create">Auctions won</Link>
+      <Dropdown.Item icon={AiFillTrophy} onClick={setWinner}>
+        Auctions won
       </Dropdown.Item>
       <Dropdown.Item icon={AiFillCar}>
         <Link href="/auctions/create">Sell my car</Link>
