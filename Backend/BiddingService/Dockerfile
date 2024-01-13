@@ -11,17 +11,17 @@ COPY Backend/BiddingService/BiddingService.csproj Backend/BiddingService/Bidding
 COPY Backend/Contracts/Contracts.csproj Backend/Contracts/Contracts.csproj
 COPY Backend/IdentityService/IdentityService.csproj Backend/IdentityService/IdentityService.csproj
 
-
 #Restore package deps
 RUN dotnet restore carsauction.sln
 
 #Copy the app folders over
-COPY Backend/GatewayService Backend/GatewayService
-WORKDIR /app/Backend/GatewayService
+COPY Backend/BiddingService Backend/BiddingService
+COPY Backend/Contracts Backend/Contracts
+WORKDIR /app/Backend/BiddingService
 RUN dotnet publish -c Release -o /app/src/out
 
 #Build Runtime Image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/src/out .
-ENTRYPOINT [ "dotnet", "GatewayService.dll" ]
+ENTRYPOINT [ "dotnet", "BiddingService.dll" ]
