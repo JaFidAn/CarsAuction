@@ -7,6 +7,7 @@ COPY carsauction.sln carsauction.sln
 COPY Backend/AuctionService/AuctionService.csproj Backend/AuctionService/AuctionService.csproj
 COPY Backend/SearchService/SearchService.csproj Backend/SearchService/SearchService.csproj
 COPY Backend/GatewayService/GatewayService.csproj Backend/GatewayService/GatewayService.csproj
+COPY Backend/NotificationService/NotificationService.csproj Backend/NotificationService/NotificationService.csproj
 COPY Backend/BiddingService/BiddingService.csproj Backend/BiddingService/BiddingService.csproj
 COPY Backend/Contracts/Contracts.csproj Backend/Contracts/Contracts.csproj
 COPY Backend/IdentityService/IdentityService.csproj Backend/IdentityService/IdentityService.csproj
