@@ -6,7 +6,7 @@ type Props = {
   imageUrl: string;
 };
 
-export default function CardImage({ imageUrl }: Props) {
+export default function CarImage({ imageUrl }: Props) {
   const [isLoading, SetLoading] = useState(true);
   return (
     <div>
